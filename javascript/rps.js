@@ -33,3 +33,30 @@
 
 
 // rps(computer_input, user_input)
+
+/*
+I want tp get make a span and there get the cordinates of X and Y 
+*/
+
+const button = document.querySelectorAll('.btn')
+
+console.log(button);
+
+
+ button.forEach(btn => {
+    btn.addEventListener('click', function(e){
+        let x = e.clientX - e.target.offsetLeft;
+        let y = e.clientY - e.target.offsetTop;
+
+        const span = document.createElement('span');
+        span.classList.add('ripple')
+
+        span.style.top = `${y}px`;
+        span.style.left = `${x}px`;
+
+        this.appendChild(span);
+
+        setTimeout(() => this.removeChild(span), 450)
+    })
+})
+
