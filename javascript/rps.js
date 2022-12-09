@@ -7,43 +7,49 @@ const scissors = document.getElementById("btn-scissors");
 
 function events(r = rock, p = paper, s = scissors) {
   r.addEventListener("click", (e) => {
-    usr_input = "r";
+    usr_input = "rock";
     play(usr_input);
   });
   p.addEventListener("click", (e) => {
-    usr_input = "p";
+    usr_input = "paper";
     play(usr_input);
   });
   s.addEventListener("click", (e) => {
-    usr_input = "s";
+    usr_input = "scissors";
     play(usr_input);
   });
 }
 
+for(let i = 0; i<5; i++){
 function play(usr_input) {
   const result = document.getElementById("mid-text-font");
 
-  let raw_computer_inputer = ["r", "p", "s"];
+  let raw_computer_inputer = ["rock", "paper", "scissors"];
+
+  let length = raw_computer_inputer.length;
 
   let computer_input =
     raw_computer_inputer[
-      Math.floor(Math.random() * raw_computer_inputer.length)
+      Math.floor(Math.random() * length)
     ];
 
   computer_input = String(computer_input);
-
+  
   if (computer_input === usr_input) {
-    result.textContent = `It's a draw ${draw}`;
-  } else if (computer_input === "r" && usr_input === "p") {
-    result.textContent = `You win!`;
-  } else if (computer_input === "p" && usr_input === "s") {
-    result.textContent = "You win!";
-  } else if (computer_input == "s" && usr_input === "r") {
-    result.textContent = "You win!";
+    result.textContent = `You both chose the same thing, it's a draw!`;
+  } else if (computer_input === "rock" && usr_input === "paper") {
+    result.textContent = `You chose ${usr_input}, you win!`;
+    i += 1
+  } else if (computer_input === "paper" && usr_input === "scissors") {
+    result.textContent = `You chose ${usr_input}, you win!`;
+  } else if (computer_input == "scissors" && usr_input === "rock") {
+    result.textContent = `You chose ${usr_input}, you win!`;
   } else {
-    result.textContent = "You lose :(";
+    result.textContent = `The computer choose ${computer_input}, you lose :(`;
   }
 }
+}
+
 
 const button = document.querySelectorAll(".btn");
 
